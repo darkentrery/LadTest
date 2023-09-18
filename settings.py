@@ -3,10 +3,10 @@ import os
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
 
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.ext.asyncio import create_async_engine
-from sqlalchemy.orm import sessionmaker, Session
+from sqlalchemy.orm import sessionmaker, Session, declarative_base
 
 # class Settings(BaseSettings):
 #     main_url: str
@@ -45,7 +45,7 @@ POSTGRES_PORT = os.getenv("POSTGRES_PORT")
 
 SQLALCHEMY_URL = f"postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_NAME}"
 
-engine = create_engine(SQLALCHEMY_URL, connect_args={'check_same_thread': False})
+engine = create_engine(SQLALCHEMY_URL)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 

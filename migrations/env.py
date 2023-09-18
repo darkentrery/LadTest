@@ -6,6 +6,11 @@ from sqlalchemy import pool
 from alembic import context
 
 from settings import POSTGRES_USER, POSTGRES_PASSWORD, POSTGRES_HOST, POSTGRES_NAME, POSTGRES_PORT, Base
+from models.product import Product, ProductInfoLink
+from models.city import City
+from models.product_category import ProductCategory
+from models.product_info import ProductInfo
+from models.product_price import ProductPrice
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
