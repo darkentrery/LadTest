@@ -1,0 +1,16 @@
+version: '3.9'
+
+volumes:
+  postgres_lad:
+
+services:
+  postgres_lad:
+    image: postgres:14.1-alpine
+    container_name: postgres_lad
+    restart: always
+    ports:
+      - "5450:5432"
+    volumes:
+      - postgres_lad:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
