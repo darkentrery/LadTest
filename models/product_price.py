@@ -21,7 +21,7 @@ class ProductPrice(Base):
     price_type = Column(Enum(PriceType), default=PriceType.retail)
     url = Column(String, nullable=True)
     created = Column(TIMESTAMP, default=datetime.utcnow)
-    update = Column(TIMESTAMP, default=datetime.utcnow)
+    updated = Column(TIMESTAMP, default=datetime.utcnow)
 
     product_id = Column(Integer, ForeignKey("products.id"), primary_key=True)
     product = relationship("Product", foreign_keys='ProductPrice.product_id', back_populates="prices")

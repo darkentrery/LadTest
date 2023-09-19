@@ -11,4 +11,8 @@ class ProductInfo(Base):
     name = Column(String, unique=True)
     value = Column(Float)
 
-    products = relationship("Product", secondary='product_info_links')
+    products = relationship("ProductInfoLink", backref='product_info')
+
+    @property
+    def k(self):
+        return "f"
