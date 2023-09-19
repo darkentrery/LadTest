@@ -4,6 +4,9 @@ from sqlalchemy import Column, Integer, String, TIMESTAMP, ForeignKey
 from sqlalchemy.orm import relationship
 
 from models.product_category import ProductCategory
+from models.product_price import ProductPrice
+from models.product_info import ProductInfo
+from models.city import City
 from settings import Base
 
 
@@ -24,6 +27,6 @@ class Product(Base):
 
     product_category_id = Column(Integer, ForeignKey(ProductCategory.id), primary_key=True)
     product_category = relationship("ProductCategory", foreign_keys='Product.product_category_id', back_populates="products")
-    prices = relationship("ProductPrice", back_populates="product_price")
+    prices = relationship("ProductPrice", back_populates="product")
     product_infos = relationship("ProductInfo", secondary='product_info_links')
-    product_cities = relationship("City", secondary='city_product_links')
+    product_cities = relationship("CityProductLink", backref="product")

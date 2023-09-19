@@ -17,4 +17,4 @@ class City(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True)
 
-    city_products = relationship("Product", secondary='city_product_links')
+    city_products = relationship("CityProductLink", backref="city")

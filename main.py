@@ -1,8 +1,11 @@
-from settings import get_db
+from sqlalchemy import select
+
+from models.product import Product
+from settings import session
 
 
 def run():
-    db = get_db()
+    products = session.execute(select(Product)).scalars().all()
     pass
 
 
